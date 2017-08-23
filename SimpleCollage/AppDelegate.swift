@@ -16,10 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let scraps = createScraps()
-        
         window = UIWindow()
-        window?.rootViewController = ViewController(scraps: scraps)
+        window?.rootViewController = ViewController(scraps: [])
         window?.makeKeyAndVisible()
 
         return true
@@ -47,12 +45,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
-    //
-    func createScraps() -> [Scrap] {
-        let image = UIImage(named: "im_1")!
-        let scrap = ImageScrap(size: image.size, center: CGPoint(x: 100, y: 100), transform: .identity, image: image)
-        return [scrap]
-    }
 }
 
