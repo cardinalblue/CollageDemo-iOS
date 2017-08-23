@@ -18,18 +18,18 @@ class ScrapController: NSObject
         self.scrap = scrap
         super.init()
         
-        scrap.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.size),      options: [.new], context: nil)
-        scrap.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.center),    options: [.new], context: nil)
+        scrap.addObserver(self, forKeyPath: #keyPath(Scrap.size),      options: [.new], context: nil)
+        scrap.addObserver(self, forKeyPath: #keyPath(Scrap.center),    options: [.new], context: nil)
         scrap
-            .addObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom), options: [.new], context: nil)
+            .addObserver(self, forKeyPath: #keyPath(Scrap.transform), options: [.new], context: nil)
         
         setupGestures()
     }
     
     deinit {
-        scrap.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.size))
-        scrap.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.center))
-        scrap.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom))
+        scrap.removeObserver(self, forKeyPath: #keyPath(Scrap.size))
+        scrap.removeObserver(self, forKeyPath: #keyPath(Scrap.center))
+        scrap.removeObserver(self, forKeyPath: #keyPath(Scrap.transform))
     }
     
     //MARK: KVO
@@ -38,14 +38,14 @@ class ScrapController: NSObject
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
         
-        if keyPath == #keyPath(ScrapViewModel.size) {
+        if keyPath == #keyPath(Scrap.size) {
             var rect = self.view.frame
             rect.size = scrap.size
             self.view.frame = rect
-        } else if keyPath == #keyPath(ScrapViewModel.center) {
+        } else if keyPath == #keyPath(Scrap.center) {
             self.view.center = scrap.center
-        } else if keyPath == #keyPath(ScrapViewModel.transfrom) {
-           self.view.transform = scrap.transfrom
+        } else if keyPath == #keyPath(Scrap.transform) {
+           self.view.transform = scrap.transform
         }
     }
     
@@ -77,9 +77,9 @@ class ScrapController: NSObject
 
     @objc private func handleRotationGesture(_ recognizer: UIRotationGestureRecognizer) {
         let rotation = recognizer.rotation
-        var transform = self.scrap.transfrom
+        var transform = self.scrap.transform
         transform = transform.rotated(by: rotation)
-        scrap.transfrom = transform
+        scrap.transform = transform
 
         // Reset rotation
         recognizer.rotation = 0
@@ -88,9 +88,9 @@ class ScrapController: NSObject
     @objc private func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         let scale = recognizer.scale
         print(scale)
-        var transform = self.scrap.transfrom
+        var transform = self.scrap.transform
         transform = transform.scaledBy(x: scale, y: scale)
-        scrap.transfrom = transform
+        scrap.transform = transform
 
         // Reset scale
         recognizer.scale = 1
@@ -120,7 +120,7 @@ class ImageScrapController: ScrapController {
                          y: self.scrap.center.x - size.width / 2,
                          width: size.width,
                          height: size.height)
-        v.transform = self.scrap.transfrom
+        v.transform = self.scrap.transform
         return v
     }()
     

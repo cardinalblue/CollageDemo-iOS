@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //
     func createScraps() -> [Scrap] {
         let image = UIImage(named: "im_1")!
-        let scrap = ImageScrap(size: image.size, center: CGPoint(x: 100, y: 100), transfrom: .identity, image: image)
+        let scrap = ImageScrap(size: image.size, center: CGPoint(x: 100, y: 100), transform: .identity, image: image)
         return [scrap]
     }
 }

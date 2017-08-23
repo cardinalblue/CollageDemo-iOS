@@ -12,15 +12,15 @@ import Foundation
 class Scrap: NSObject {
     @objc dynamic var size: CGSize = .zero
     @objc dynamic var center: CGPoint = .zero
-    @objc dynamic var transfrom: CGAffineTransform = .identity
+    @objc dynamic var transform: CGAffineTransform = .identity
     
     init(size: CGSize = .zero,
          center: CGPoint = .zero,
-         transfrom: CGAffineTransform = .identity)
+         transform: CGAffineTransform = .identity)
     {
         self.size = size
         self.center = center
-        self.transfrom = transfrom
+        self.transform = transform
     }
 }
 
@@ -29,11 +29,11 @@ class ImageScrap: Scrap {
     
     init(size: CGSize = .zero,
          center: CGPoint = .zero,
-         transfrom: CGAffineTransform = .identity,
+         transform: CGAffineTransform = .identity,
          image: UIImage)
     {
         self.image = image
-        super.init(size: size, center: center, transfrom: transfrom)
+        super.init(size: size, center: center, transform: transform)
     }
     
 }
