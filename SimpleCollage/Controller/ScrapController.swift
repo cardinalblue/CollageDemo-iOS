@@ -72,7 +72,7 @@ class ScrapController: NSObject
     
     //MARK: Gesture handlers
     @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: view.superview)
+        let translation = recognizer.translation(in: view)
         var center = self.scrap.center
         center = center.applying(CGAffineTransform(translationX: translation.x, y: translation.y))
         scrap.center = center
