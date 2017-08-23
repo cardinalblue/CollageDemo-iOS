@@ -57,10 +57,11 @@ class ViewController: UIViewController {
     }
     
     func createScrapController(scrap: Scrap) -> ScrapController {
-        guard let imageScrap = scrap as? ImageScrap else {
-            return ScrapController(scrap: scrap)
+        let scrapViewModel = ScrapViewModel(scrap: scrap)
+        if let imageScrap = scrap as? ImageScrap {
+            return ImageScrapController(scrapVM: scrapViewModel, image: imageScrap.image)
         }
-        return ImageScrapController(scrap: scrap, image: imageScrap.image)
+        return ScrapController(scrapVM: scrapViewModel)
     }
     
     func setupScrapController(_ scrapController: ScrapController) {
