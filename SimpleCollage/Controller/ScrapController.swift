@@ -72,7 +72,7 @@ class ScrapController: NSObject
     
     //MARK: Gesture handlers
     @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: view)
+        let translation = recognizer.translation(in: view.superview)
         let gestureInfo = TranslationGestureInfo(state: recognizer.state.gestureInfoState, translation: translation)
         scrapVM.handleGestureInfo(ofTranslation: gestureInfo)
         
