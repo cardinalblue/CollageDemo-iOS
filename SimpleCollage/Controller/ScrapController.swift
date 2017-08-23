@@ -22,8 +22,7 @@ class ScrapController: NSObject
         
         scrap.addObserver(self, forKeyPath: #keyPath(Scrap.size),      options: [.new], context: nil)
         scrap.addObserver(self, forKeyPath: #keyPath(Scrap.center),    options: [.new], context: nil)
-        scrap
-            .addObserver(self, forKeyPath: #keyPath(Scrap.transform), options: [.new], context: nil)
+        scrap.addObserver(self, forKeyPath: #keyPath(Scrap.transform), options: [.new], context: nil)
         
         setupGestures()
     }
