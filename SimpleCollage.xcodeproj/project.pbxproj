@@ -16,6 +16,7 @@
 		FB2E2B141F46EA0900E1F14F /* ScrapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B131F46EA0900E1F14F /* ScrapViewModel.swift */; };
 		FB2E2B171F46EABD00E1F14F /* Dynmaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B161F46EABD00E1F14F /* Dynmaic.swift */; };
 		FB2E2B191F46EBA700E1F14F /* ScrapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B181F46EBA700E1F14F /* ScrapController.swift */; };
+		FB9DBE421F4D65610005FB99 /* ScrapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B92EC1F4D61C30096CA97 /* ScrapViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		FB1B92E51F4D52490096CA97 /* GestureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureInfo.swift; sourceTree = "<group>"; };
+		FB1B92EB1F4D61C30096CA97 /* SimpleCollageTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleCollageTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		FB1B92EC1F4D61C30096CA97 /* ScrapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewModelTests.swift; sourceTree = "<group>"; };
 		FB2E2AE91F46E90500E1F14F /* SimpleCollage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCollage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2E2AEE1F46E90500E1F14F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				FB2E2B031F46E90500E1F14F /* Info.plist */,
+				FB1B92EC1F4D61C30096CA97 /* ScrapViewModelTests.swift */,
+				FB1B92EB1F4D61C30096CA97 /* SimpleCollageTests-Bridging-Header.h */,
 			);
 			path = SimpleCollageTests;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB9DBE421F4D65610005FB99 /* ScrapViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +413,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SimpleCollageTests/SimpleCollageTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleCollage.app/SimpleCollage";
 			};
@@ -424,6 +432,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SimpleCollageTests/SimpleCollageTests-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleCollage.app/SimpleCollage";
 			};
