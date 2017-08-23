@@ -9,16 +9,22 @@
 import UIKit
 import Foundation
 
-protocol Scrap {
-    var size: CGSize                 { get set }
-    var center: CGPoint              { get set }
-    var transfrom: CGAffineTransform { get set }
+class Scrap: NSObject {
+    @objc dynamic var size: CGSize = .zero
+    @objc dynamic var center: CGPoint = .zero
+    @objc dynamic var transfrom: CGAffineTransform = .identity
+    
+    init(size: CGSize = .zero,
+         center: CGPoint = .zero,
+         transfrom: CGAffineTransform = .identity)
+    {
+        self.size = size
+        self.center = center
+        self.transfrom = transfrom
+    }
 }
 
-struct ImageScrap: Scrap {
-    var size: CGSize                 = .zero
-    var center: CGPoint              = .zero
-    var transfrom: CGAffineTransform = .identity
+class ImageScrap: Scrap {
     var image: UIImage
     
     init(size: CGSize = .zero,
@@ -26,10 +32,8 @@ struct ImageScrap: Scrap {
          transfrom: CGAffineTransform = .identity,
          image: UIImage)
     {
-        self.size = size
-        self.center = center
-        self.transfrom = transfrom
         self.image = image
+        super.init(size: size, center: center, transfrom: transfrom)
     }
     
 }

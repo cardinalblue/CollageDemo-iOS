@@ -11,24 +11,25 @@ import Foundation
 
 class ScrapController: NSObject
 {
-    let scrapVM: ScrapViewModel
+    let scrap: Scrap
     var view: UIView = UIView()
     
-    init(scrapVM: ScrapViewModel) {
-        self.scrapVM = scrapVM
+    init(scrap: Scrap) {
+        self.scrap = scrap
         super.init()
         
-        scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.size),      options: [.new], context: nil)
-        scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.center),    options: [.new], context: nil)
-        scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom), options: [.new], context: nil)
+        scrap.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.size),      options: [.new], context: nil)
+        scrap.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.center),    options: [.new], context: nil)
+        scrap
+            .addObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom), options: [.new], context: nil)
         
         setupGestures()
     }
     
     deinit {
-        scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.size))
-        scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.center))
-        scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom))
+        scrap.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.size))
+        scrap.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.center))
+        scrap.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom))
     }
     
     //MARK: KVO
@@ -39,12 +40,12 @@ class ScrapController: NSObject
         
         if keyPath == #keyPath(ScrapViewModel.size) {
             var rect = self.view.frame
-            rect.size = scrapVM.size
+            rect.size = scrap.size
             self.view.frame = rect
         } else if keyPath == #keyPath(ScrapViewModel.center) {
-            self.view.center = scrapVM.center
+            self.view.center = scrap.center
         } else if keyPath == #keyPath(ScrapViewModel.transfrom) {
-           self.view.transform = scrapVM.transfrom
+           self.view.transform = scrap.transfrom
         }
     }
     
@@ -66,9 +67,9 @@ class ScrapController: NSObject
     //MARK: Gesture handlers
     @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: view.superview)
-        var center = self.scrapVM.center
+        var center = self.scrap.center
         center = center.applying(CGAffineTransform(translationX: translation.x, y: translation.y))
-        scrapVM.center = center
+        scrap.center = center
 
         // Reset translation
         recognizer.setTranslation(.zero, in: view)
@@ -76,9 +77,9 @@ class ScrapController: NSObject
 
     @objc private func handleRotationGesture(_ recognizer: UIRotationGestureRecognizer) {
         let rotation = recognizer.rotation
-        var transform = self.scrapVM.transfrom
+        var transform = self.scrap.transfrom
         transform = transform.rotated(by: rotation)
-        scrapVM.transfrom = transform
+        scrap.transfrom = transform
 
         // Reset rotation
         recognizer.rotation = 0
@@ -87,9 +88,9 @@ class ScrapController: NSObject
     @objc private func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         let scale = recognizer.scale
         print(scale)
-        var transform = self.scrapVM.transfrom
+        var transform = self.scrap.transfrom
         transform = transform.scaledBy(x: scale, y: scale)
-        scrapVM.transfrom = transform
+        scrap.transfrom = transform
 
         // Reset scale
         recognizer.scale = 1
@@ -108,20 +109,23 @@ extension ScrapController: UIGestureRecognizerDelegate {
 // =============================================================================
 
 class ImageScrapController: ScrapController {
-    
     var image: UIImage
     
     lazy override var view: UIView = {
         let v = UIImageView()
         v.image = self.image
         v.isUserInteractionEnabled = true
-        v.frame     = self.scrapVM.frame
-        v.transform = self.scrapVM.transfrom
+        let size = self.scrap.size
+        v.frame = CGRect(x: self.scrap.center.x - size.width / 2,
+                         y: self.scrap.center.x - size.width / 2,
+                         width: size.width,
+                         height: size.height)
+        v.transform = self.scrap.transfrom
         return v
     }()
     
-    init(scrapVM: ScrapViewModel, image: UIImage) {
+    init(scrap: Scrap, image: UIImage) {
         self.image = image
-        super.init(scrapVM: scrapVM)
+        super.init(scrap: scrap)
     }
 }
