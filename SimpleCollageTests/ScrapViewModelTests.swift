@@ -51,13 +51,16 @@ class ScrapViewModelTests: XCTestCase {
             gestureInfo.state = state
             gestureInfo.translation = CGPoint(x: tx, y: ty)
             scrapViewModel.handleGestureInfo(ofTranslation: gestureInfo)
+            
+            // Test ViewModel's center
             XCTAssertEqual(scrapViewModel.center, expectedCenter)
             
+            // Test Model's center
             // The model should only be updated when gesture is ended
-            if state != .ended {
-                XCTAssertEqual(scrap.center, CGPoint(x: 0, y: 0))
-            } else {
+            if state == .ended {
                 XCTAssertEqual(scrap.center, expectedCenter)
+            } else {
+                XCTAssertEqual(scrap.center, CGPoint(x: 0, y: 0))
             }
         }
     }

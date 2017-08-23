@@ -29,7 +29,7 @@ class ScrapViewModel: NSObject {
         transform = scrap.transform
     }
     
-    func handleGestureInfo(ofTransfrom gestureInfo: TransformGestureInfo) {
+    func handleGestureInfo(ofTransform gestureInfo: TransformGestureInfo) {
         transform = transform.concatenating(gestureInfo.transform)
         if gestureInfo.state == .ended {
             scrap.transform = transform

@@ -84,7 +84,7 @@ class ScrapController: NSObject
         let rotation = recognizer.rotation
         let transform = CGAffineTransform(rotationAngle: rotation)
         let gestureInfo = TransformGestureInfo(state: recognizer.state.gestureInfoState, transform: transform)
-        scrapVM.handleGestureInfo(ofTransfrom: gestureInfo)
+        scrapVM.handleGestureInfo(ofTransform: gestureInfo)
         
         // Reset
         recognizer.rotation = 0
@@ -94,7 +94,7 @@ class ScrapController: NSObject
         let scale = recognizer.scale
         let transform = CGAffineTransform(scaleX: scale, y: scale)
         let gestureInfo = TransformGestureInfo(state: recognizer.state.gestureInfoState, transform: transform)
-        scrapVM.handleGestureInfo(ofTransfrom: gestureInfo)
+        scrapVM.handleGestureInfo(ofTransform: gestureInfo)
         
         // Reset
         recognizer.scale = 1
