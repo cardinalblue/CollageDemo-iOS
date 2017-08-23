@@ -11,8 +11,6 @@
 		FB2E2AED1F46E90500E1F14F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */; };
 		FB2E2AEF1F46E90500E1F14F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2AEE1F46E90500E1F14F /* ViewController.swift */; };
 		FB2E2AF41F46E90500E1F14F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2E2AF31F46E90500E1F14F /* Assets.xcassets */; };
-		FB2E2AF71F46E90500E1F14F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB2E2AF51F46E90500E1F14F /* LaunchScreen.storyboard */; };
-		FB2E2B021F46E90500E1F14F /* SimpleCollageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B011F46E90500E1F14F /* SimpleCollageTests.swift */; };
 		FB2E2B0F1F46E93D00E1F14F /* Scrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B0E1F46E93D00E1F14F /* Scrap.swift */; };
 		FB2E2B111F46E99F00E1F14F /* Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B101F46E99F00E1F14F /* Collage.swift */; };
 		FB2E2B141F46EA0900E1F14F /* ScrapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B131F46EA0900E1F14F /* ScrapViewModel.swift */; };
@@ -36,10 +34,8 @@
 		FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2E2AEE1F46E90500E1F14F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FB2E2AF31F46E90500E1F14F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FB2E2AF61F46E90500E1F14F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB2E2AF81F46E90500E1F14F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2E2AFD1F46E90500E1F14F /* SimpleCollageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleCollageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FB2E2B011F46E90500E1F14F /* SimpleCollageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollageTests.swift; sourceTree = "<group>"; };
 		FB2E2B031F46E90500E1F14F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2E2B0E1F46E93D00E1F14F /* Scrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrap.swift; sourceTree = "<group>"; };
 		FB2E2B101F46E99F00E1F14F /* Collage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collage.swift; sourceTree = "<group>"; };
@@ -92,7 +88,6 @@
 				FB2E2B0C1F46E91F00E1F14F /* Model */,
 				FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */,
 				FB2E2AF31F46E90500E1F14F /* Assets.xcassets */,
-				FB2E2AF51F46E90500E1F14F /* LaunchScreen.storyboard */,
 				FB2E2AF81F46E90500E1F14F /* Info.plist */,
 			);
 			path = SimpleCollage;
@@ -101,7 +96,6 @@
 		FB2E2B001F46E90500E1F14F /* SimpleCollageTests */ = {
 			isa = PBXGroup;
 			children = (
-				FB2E2B011F46E90500E1F14F /* SimpleCollageTests.swift */,
 				FB2E2B031F46E90500E1F14F /* Info.plist */,
 			);
 			path = SimpleCollageTests;
@@ -188,6 +182,7 @@
 					};
 					FB2E2AFC1F46E90500E1F14F = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						TestTargetID = FB2E2AE81F46E90500E1F14F;
 					};
 				};
@@ -216,7 +211,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB2E2AF71F46E90500E1F14F /* LaunchScreen.storyboard in Resources */,
 				FB2E2AF41F46E90500E1F14F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +244,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB2E2B021F46E90500E1F14F /* SimpleCollageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,17 +256,6 @@
 			targetProxy = FB2E2AFE1F46E90500E1F14F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FB2E2AF51F46E90500E1F14F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FB2E2AF61F46E90500E1F14F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FB2E2B041F46E90500E1F14F /* Debug */ = {
@@ -330,6 +312,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -379,6 +362,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -389,10 +373,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F6J8B455GU;
 				INFOPLIST_FILE = SimpleCollage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -403,10 +387,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F6J8B455GU;
 				INFOPLIST_FILE = SimpleCollage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -416,12 +400,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = F6J8B455GU;
 				INFOPLIST_FILE = SimpleCollageTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleCollage.app/SimpleCollage";
 			};
@@ -432,12 +417,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = F6J8B455GU;
 				INFOPLIST_FILE = SimpleCollageTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleCollage.app/SimpleCollage";
 			};
