@@ -28,5 +28,19 @@ class ScrapViewModel: NSObject {
         center    = scrap.center
         transform = scrap.transform
     }
+    
+    func handleGestureInfo(ofTransfrom gestureInfo: TransformGestureInfo) {
+        transform = transform.concatenating(gestureInfo.transform)
+        if gestureInfo.state == .ended {
+            scrap.transform = transform
+        }
+    }
+    
+    func handleGestureInfo(ofTranslation gestureInfo: TranslationGestureInfo) {
+        let translation = gestureInfo.translation
+        center = center.applying(CGAffineTransform(translationX: translation.x, y: translation.y))
+        if gestureInfo.state == .ended {
+            scrap.center = center
+        }
     }
 }

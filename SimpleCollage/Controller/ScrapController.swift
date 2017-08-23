@@ -65,33 +65,31 @@ class ScrapController: NSObject
     
     //MARK: Gesture handlers
     @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: view.superview)
-        var center = self.scrapVM.center
-        center = center.applying(CGAffineTransform(translationX: translation.x, y: translation.y))
-        scrapVM.center = center
-
-        // Reset translation
+        let translation = recognizer.translation(in: view)
+        let gestureInfo = TranslationGestureInfo(state: recognizer.state.gestureInfoState, translation: translation)
+        scrapVM.handleGestureInfo(ofTranslation: gestureInfo)
+        
+        // Reset
         recognizer.setTranslation(.zero, in: view)
     }
 
     @objc private func handleRotationGesture(_ recognizer: UIRotationGestureRecognizer) {
         let rotation = recognizer.rotation
-        var transform = self.scrapVM.transfrom
-        transform = transform.rotated(by: rotation)
-        scrapVM.transfrom = transform
-
-        // Reset rotation
+        let transform = CGAffineTransform(rotationAngle: rotation)
+        let gestureInfo = TransformGestureInfo(state: recognizer.state.gestureInfoState, transform: transform)
+        scrapVM.handleGestureInfo(ofTransfrom: gestureInfo)
+        
+        // Reset
         recognizer.rotation = 0
     }
 
     @objc private func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
         let scale = recognizer.scale
-        print(scale)
-        var transform = self.scrapVM.transfrom
-        transform = transform.scaledBy(x: scale, y: scale)
-        scrapVM.transfrom = transform
-
-        // Reset scale
+        let transform = CGAffineTransform(scaleX: scale, y: scale)
+        let gestureInfo = TransformGestureInfo(state: recognizer.state.gestureInfoState, transform: transform)
+        scrapVM.handleGestureInfo(ofTransfrom: gestureInfo)
+        
+        // Reset
         recognizer.scale = 1
     }
 }

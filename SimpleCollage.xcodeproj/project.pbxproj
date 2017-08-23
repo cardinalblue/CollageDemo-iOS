@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB1B92E61F4D52490096CA97 /* GestureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1B92E51F4D52490096CA97 /* GestureInfo.swift */; };
 		FB2E2AED1F46E90500E1F14F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */; };
 		FB2E2AEF1F46E90500E1F14F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2AEE1F46E90500E1F14F /* ViewController.swift */; };
 		FB2E2AF41F46E90500E1F14F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2E2AF31F46E90500E1F14F /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB1B92E51F4D52490096CA97 /* GestureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureInfo.swift; sourceTree = "<group>"; };
 		FB2E2AE91F46E90500E1F14F /* SimpleCollage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCollage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2E2AEE1F46E90500E1F14F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				FB2E2B131F46EA0900E1F14F /* ScrapViewModel.swift */,
+				FB1B92E51F4D52490096CA97 /* GestureInfo.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				FB2E2B111F46E99F00E1F14F /* Collage.swift in Sources */,
 				FB2E2B141F46EA0900E1F14F /* ScrapViewModel.swift in Sources */,
 				FB2E2B171F46EABD00E1F14F /* Dynmaic.swift in Sources */,
+				FB1B92E61F4D52490096CA97 /* GestureInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
