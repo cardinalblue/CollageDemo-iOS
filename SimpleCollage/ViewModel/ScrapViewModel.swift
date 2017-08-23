@@ -13,7 +13,7 @@ class ScrapViewModel: NSObject {
     
     @objc dynamic var size: CGSize
     @objc dynamic var center: CGPoint
-    @objc dynamic var transfrom: CGAffineTransform
+    @objc dynamic var transform: CGAffineTransform
     
     var frame: CGRect {
         return CGRect(x: center.x - size.width / 2,
@@ -26,6 +26,7 @@ class ScrapViewModel: NSObject {
         
         size      = scrap.size
         center    = scrap.center
-        transfrom = scrap.transfrom
+        transform = scrap.transform
+    }
     }
 }

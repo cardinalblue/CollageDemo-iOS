@@ -20,7 +20,7 @@ class ScrapController: NSObject
         
         scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.size),      options: [.new], context: nil)
         scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.center),    options: [.new], context: nil)
-        scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom), options: [.new], context: nil)
+        scrapVM.addObserver(self, forKeyPath: #keyPath(ScrapViewModel.transform), options: [.new], context: nil)
         
         setupGestures()
     }
@@ -28,7 +28,7 @@ class ScrapController: NSObject
     deinit {
         scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.size))
         scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.center))
-        scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.transfrom))
+        scrapVM.removeObserver(self, forKeyPath: #keyPath(ScrapViewModel.transform))
     }
     
     //MARK: KVO
@@ -43,8 +43,8 @@ class ScrapController: NSObject
             self.view.frame = rect
         } else if keyPath == #keyPath(ScrapViewModel.center) {
             self.view.center = scrapVM.center
-        } else if keyPath == #keyPath(ScrapViewModel.transfrom) {
-           self.view.transform = scrapVM.transfrom
+        } else if keyPath == #keyPath(ScrapViewModel.transform) {
+           self.view.transform = scrapVM.transform
         }
     }
     
@@ -116,7 +116,7 @@ class ImageScrapController: ScrapController {
         v.image = self.image
         v.isUserInteractionEnabled = true
         v.frame     = self.scrapVM.frame
-        v.transform = self.scrapVM.transfrom
+        v.transform = self.scrapVM.transform
         return v
     }()
     
