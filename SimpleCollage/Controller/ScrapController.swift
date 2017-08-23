@@ -129,7 +129,7 @@ class ImageScrapController: ScrapController {
         v.isUserInteractionEnabled = true
         let size = self.scrap.size
         v.frame = CGRect(x: self.scrap.center.x - size.width / 2,
-                         y: self.scrap.center.x - size.width / 2,
+                         y: self.scrap.center.y - size.height / 2,
                          width: size.width,
                          height: size.height)
         v.transform = self.scrap.transform
