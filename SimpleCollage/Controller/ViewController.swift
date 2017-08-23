@@ -9,24 +9,30 @@
 import UIKit
 
 class ViewController: UIViewController {
-    var scrapViewControllers: [ScrapController]
+    
+    //MARK: Getters/Setters
+    private var scrapViewControllers: [ScrapController] = []
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    //MARK: Object lifecycle
     init(scraps: [Scrap]) {
-        self.scrapViewControllers = scraps.map { (scrap) -> ScrapController in
-            let scrapViewModel = ScrapViewModel(scrap: scrap)
-            return ScrapController(scrapVM: scrapViewModel)
-        }
         super.init(nibName: nil, bundle: nil)
+        self.scrapViewControllers = scraps.map { (scrap) -> ScrapController in
+            return self.createScrapController(scrap: scrap)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
-        
+        view.backgroundColor = UIColor.red
         for sc in scrapViewControllers {
             self.view.addSubview(sc.view)
         }
@@ -36,8 +42,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func createScrapController(forScrap scrap: Scrap) {
+    func createScrapController(scrap: Scrap) -> ScrapController {
+        let scrapViewModel = ScrapViewModel(scrap: scrap)
+        if let imageScrap = scrap as? ImageScrap {
+            return ImageScrapController(scrapVM: scrapViewModel, image: imageScrap.image)
+        }
+        return ScrapController(scrapVM: scrapViewModel)
     }
-    
 }
 

@@ -8,27 +8,24 @@
 
 import UIKit
 
-protocol ScrapViewModelProtocol {
-    var size: Dynamic<CGSize> { get set }
-    var center: Dynamic<CGPoint> { get set }
-    var transfrom: Dynamic<CGAffineTransform> { get set }
-    var image: Dynamic<UIImage?> { get set }
-}
-
-class ScrapViewModel : ScrapViewModelProtocol {
+class ScrapViewModel: NSObject {
+    private var scrap: Scrap
     
-    var scrap: Scrap
-    var size: Dynamic<CGSize>
-    var center: Dynamic<CGPoint>
-    var transfrom: Dynamic<CGAffineTransform>
-    var image: Dynamic<UIImage?>
+    @objc dynamic var size: CGSize
+    @objc dynamic var center: CGPoint
+    @objc dynamic var transfrom: CGAffineTransform
+    
+    var frame: CGRect {
+        return CGRect(x: center.x - size.width / 2,
+                      y: center.y - size.height / 2,
+                      width: size.width, height: size.height)
+    }
 
     init(scrap: Scrap) {
         self.scrap = scrap
         
-        size = Dynamic(scrap.size)
-        center = Dynamic(scrap.center)
-        transfrom = Dynamic(scrap.transfrom)
-        image = Dynamic(scrap.image)
+        size      = scrap.size
+        center    = scrap.center
+        transfrom = scrap.transfrom
     }
 }
