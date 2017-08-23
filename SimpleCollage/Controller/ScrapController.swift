@@ -20,17 +20,11 @@ class ScrapController: NSObject
         self.scrap = scrap
         super.init()
         
-        scrap.addObserver(self, forKeyPath: #keyPath(Scrap.size),      options: [.new], context: nil)
-        scrap.addObserver(self, forKeyPath: #keyPath(Scrap.center),    options: [.new], context: nil)
-        scrap.addObserver(self, forKeyPath: #keyPath(Scrap.transform), options: [.new], context: nil)
-        
+        // TODO: Binding View - Model by KVO
         setupGestures()
     }
     
     deinit {
-        scrap.removeObserver(self, forKeyPath: #keyPath(Scrap.size))
-        scrap.removeObserver(self, forKeyPath: #keyPath(Scrap.center))
-        scrap.removeObserver(self, forKeyPath: #keyPath(Scrap.transform))
     }
     
     //MARK: KVO
@@ -38,31 +32,11 @@ class ScrapController: NSObject
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == #keyPath(Scrap.size) {
-            var rect = self.view.frame
-            rect.size = scrap.size
-            self.view.frame = rect
-        } else if keyPath == #keyPath(Scrap.center) {
-            self.view.center = scrap.center
-        } else if keyPath == #keyPath(Scrap.transform) {
-           self.view.transform = scrap.transform
-        }
     }
     
     //MARK: Subviews
     private func setupGestures() {
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        panGesture.delegate = self
-        view.addGestureRecognizer(panGesture)
-        
-        let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotationGesture(_:)))
-        rotationGesture.delegate = self
-        view.addGestureRecognizer(rotationGesture)
-        
-        let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
-        scaleGesture.delegate = self
-        view.addGestureRecognizer(scaleGesture)
+        // TODO: Add Pan, Rotation, Scale gestures
     }
     
     internal func createView() -> UIView {
@@ -71,36 +45,6 @@ class ScrapController: NSObject
     }
     
     //MARK: Gesture handlers
-    @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        let translation = recognizer.translation(in: view)
-        var center = self.scrap.center
-        center = center.applying(CGAffineTransform(translationX: translation.x, y: translation.y))
-        scrap.center = center
-
-        // Reset translation
-        recognizer.setTranslation(.zero, in: view)
-    }
-
-    @objc private func handleRotationGesture(_ recognizer: UIRotationGestureRecognizer) {
-        let rotation = recognizer.rotation
-        var transform = self.scrap.transform
-        transform = transform.rotated(by: rotation)
-        scrap.transform = transform
-
-        // Reset rotation
-        recognizer.rotation = 0
-    }
-
-    @objc private func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
-        let scale = recognizer.scale
-        print(scale)
-        var transform = self.scrap.transform
-        transform = transform.scaledBy(x: scale, y: scale)
-        scrap.transform = transform
-
-        // Reset scale
-        recognizer.scale = 1
-    }
 }
 
 // =============================================================================
