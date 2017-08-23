@@ -12,7 +12,9 @@ import Foundation
 class ScrapController: NSObject
 {
     let scrap: Scrap
-    var view: UIView = UIView()
+    lazy var view: UIView = {
+        return self.createView()
+    }()
     
     init(scrap: Scrap) {
         self.scrap = scrap
@@ -64,6 +66,11 @@ class ScrapController: NSObject
         view.addGestureRecognizer(scaleGesture)
     }
     
+    internal func createView() -> UIView {
+        let v = UIView()
+        return v
+    }
+    
     //MARK: Gesture handlers
     @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: view.superview)
@@ -111,7 +118,12 @@ extension ScrapController: UIGestureRecognizerDelegate {
 class ImageScrapController: ScrapController {
     var image: UIImage
     
-    lazy override var view: UIView = {
+    init(scrap: Scrap, image: UIImage) {
+        self.image = image
+        super.init(scrap: scrap)
+    }
+    
+    internal override func createView() -> UIView {
         let v = UIImageView()
         v.image = self.image
         v.isUserInteractionEnabled = true
@@ -122,10 +134,6 @@ class ImageScrapController: ScrapController {
                          height: size.height)
         v.transform = self.scrap.transform
         return v
-    }()
-    
-    init(scrap: Scrap, image: UIImage) {
-        self.image = image
-        super.init(scrap: scrap)
     }
+
 }
