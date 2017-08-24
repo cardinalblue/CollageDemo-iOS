@@ -127,7 +127,29 @@ class ImageScrapController: ScrapController {
         v.image = self.image
         v.frame = scrapVM.frame
         v.transform = scrapVM.transform
+        
+        if #available(iOS 11.0, *) {
+            v.addInteraction(UIDragInteraction(delegate: self))
+        }
+        
         return v
     }
+}
 
+@available(iOS 11.0, *)
+extension ImageScrapController: UIDragInteractionDelegate {
+    
+    func createDragItems() -> [UIDragItem] {
+        let itemProvider = NSItemProvider(object: image)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        return [dragItem]
+    }
+    
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForBeginning session: UIDragSession) -> [UIDragItem] {
+        return createDragItems()
+    }
+    
+    func dragInteraction(_ interaction: UIDragInteraction, itemsForAddingTo session: UIDragSession, withTouchAt point: CGPoint) -> [UIDragItem] {
+        return createDragItems()
+    }
 }
