@@ -9,6 +9,21 @@
 import UIKit
 import Foundation
 
+extension UIView
+{
+    func updateAnchorPoint(forTouchPoints points: (CGPoint, CGPoint)) {
+        let (p1, p2) = points
+        let centerPoint = CGPoint(x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
+        let newAnchorPoint = CGPoint(x: centerPoint.x / bounds.width,
+                                     y: centerPoint.y / bounds.height)
+        let oldAnchorPoint = layer.anchorPoint
+        layer.anchorPoint = newAnchorPoint
+        let offsetX = bounds.width * (newAnchorPoint.x - oldAnchorPoint.x)
+        let offsetY = bounds.height * (newAnchorPoint.y - oldAnchorPoint.y)
+        transform = transform.concatenating(CGAffineTransform(translationX: offsetX, y: offsetY))
+    }
+}
+
 class ScrapController: NSObject
 {
     let scrap: Scrap
