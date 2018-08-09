@@ -12,8 +12,6 @@
 		FB2E2AF41F46E90500E1F14F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2E2AF31F46E90500E1F14F /* Assets.xcassets */; };
 		FB2E2B0F1F46E93D00E1F14F /* Scrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B0E1F46E93D00E1F14F /* Scrap.swift */; };
 		FB2E2B111F46E99F00E1F14F /* Collage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B101F46E99F00E1F14F /* Collage.swift */; };
-		FB2E2B141F46EA0900E1F14F /* ScrapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B131F46EA0900E1F14F /* ScrapViewModel.swift */; };
-		FB2E2B171F46EABD00E1F14F /* Dynmaic.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B161F46EABD00E1F14F /* Dynmaic.swift */; };
 		FB2E2B191F46EBA700E1F14F /* ScrapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2B181F46EBA700E1F14F /* ScrapController.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +35,6 @@
 		FB2E2B031F46E90500E1F14F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB2E2B0E1F46E93D00E1F14F /* Scrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scrap.swift; sourceTree = "<group>"; };
 		FB2E2B101F46E99F00E1F14F /* Collage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collage.swift; sourceTree = "<group>"; };
-		FB2E2B131F46EA0900E1F14F /* ScrapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapViewModel.swift; sourceTree = "<group>"; };
-		FB2E2B161F46EABD00E1F14F /* Dynmaic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynmaic.swift; sourceTree = "<group>"; };
 		FB2E2B181F46EBA700E1F14F /* ScrapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +77,6 @@
 		FB2E2AEB1F46E90500E1F14F /* SimpleCollage */ = {
 			isa = PBXGroup;
 			children = (
-				FB2E2B121F46E9FD00E1F14F /* ViewModel */,
 				FB2E2B0D1F46E92C00E1F14F /* Controller */,
 				FB2E2B0C1F46E91F00E1F14F /* Model */,
 				FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */,
@@ -102,7 +97,6 @@
 		FB2E2B0C1F46E91F00E1F14F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FB2E2B161F46EABD00E1F14F /* Dynmaic.swift */,
 				FB2E2B0E1F46E93D00E1F14F /* Scrap.swift */,
 				FB2E2B101F46E99F00E1F14F /* Collage.swift */,
 			);
@@ -116,14 +110,6 @@
 				FB2E2B181F46EBA700E1F14F /* ScrapController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		FB2E2B121F46E9FD00E1F14F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				FB2E2B131F46EA0900E1F14F /* ScrapViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +217,6 @@
 				FB2E2B191F46EBA700E1F14F /* ScrapController.swift in Sources */,
 				FB2E2AED1F46E90500E1F14F /* AppDelegate.swift in Sources */,
 				FB2E2B111F46E99F00E1F14F /* Collage.swift in Sources */,
-				FB2E2B141F46EA0900E1F14F /* ScrapViewModel.swift in Sources */,
-				FB2E2B171F46EABD00E1F14F /* Dynmaic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
