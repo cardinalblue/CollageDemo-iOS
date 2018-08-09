@@ -34,24 +34,11 @@ class ScrapController: NSObject
     init(scrap: Scrap) {
         self.scrap = scrap
         super.init()
-        
-        // TODO: Binding View - Model by KVO
         setupGestures()
     }
-    
-    deinit {
-    }
-    
-    //MARK: KVO
-    override func observeValue(forKeyPath keyPath: String?,
-                               of object: Any?,
-                               change: [NSKeyValueChangeKey : Any]?,
-                               context: UnsafeMutableRawPointer?) {
-    }
-    
+
     //MARK: Subviews
     private func setupGestures() {
-        // TODO: Add Pan, Rotation, Scale gestures
     }
     
     internal func createView() -> UIView {
