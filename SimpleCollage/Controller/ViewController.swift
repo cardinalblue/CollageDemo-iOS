@@ -72,7 +72,7 @@ class ViewController: UIViewController {
         guard let image = UIImage(named: named) else {
             return
         }
-        let transform = CGAffineTransform(rotationAngle: CGFloat(arc4random_uniform(181)) * .pi / 180) // random rotation
+        let transform = CGAffineTransform.identity// CGAffineTransform(rotationAngle: CGFloat(arc4random_uniform(181)) * .pi / 180) // random rotation
         let scrap = ImageScrap(size: image.size, center: view.center, transform: transform, image: image)
         let scrapController = createScrapController(scrap: scrap)
         setupScrapController(scrapController)
