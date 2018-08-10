@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+// =============================================================================
+
 extension UIView
 {
     func updateAnchorPoint(forTouchPoints points: (CGPoint, CGPoint)) {
@@ -16,13 +18,19 @@ extension UIView
         let centerPoint = CGPoint(x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2)
         let newAnchorPoint = CGPoint(x: centerPoint.x / bounds.width,
                                      y: centerPoint.y / bounds.height)
+        updateAnchorPoint(newAnchorPoint)
+    }
+
+    func updateAnchorPoint(_ newAnchorPoint: CGPoint) {
         let oldAnchorPoint = layer.anchorPoint
-        layer.anchorPoint = newAnchorPoint
         let offsetX = bounds.width * (newAnchorPoint.x - oldAnchorPoint.x)
         let offsetY = bounds.height * (newAnchorPoint.y - oldAnchorPoint.y)
         transform = transform.concatenating(CGAffineTransform(translationX: offsetX, y: offsetY))
+        layer.anchorPoint = newAnchorPoint
     }
 }
+
+// =============================================================================
 
 class ScrapController: NSObject
 {
@@ -30,6 +38,11 @@ class ScrapController: NSObject
     lazy var view: UIView = {
         return self.createView()
     }()
+
+    internal func createView() -> UIView {
+        let v = UIView()
+        return v
+    }
     
     init(scrap: Scrap) {
         self.scrap = scrap
@@ -39,14 +52,51 @@ class ScrapController: NSObject
 
     //MARK: Subviews
     private func setupGestures() {
+        // Drag
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        panGesture.delegate = self
+        view.addGestureRecognizer(panGesture)
+
+        // Zoom in/out
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        pinchGesture.delegate = self
+        view.addGestureRecognizer(pinchGesture)
+
+        // Rotate
+        let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotateGesture(_:)))
+        rotateGesture.delegate = self
+        view.addGestureRecognizer(rotateGesture)
     }
-    
-    internal func createView() -> UIView {
-        let v = UIView()
-        return v
-    }
-    
+
     //MARK: Gesture handlers
+
+    @objc private func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: recognizer.view?.superview)
+        view.center = view.center.applying(CGAffineTransform(translationX: translation.x, y: translation.y))
+        recognizer.setTranslation(.zero, in: recognizer.view?.superview)
+    }
+
+    @objc private func handlePinchGesture(_ recognizer: UIPinchGestureRecognizer) {
+        if recognizer.state == .began {
+            let p1 = recognizer.location(ofTouch: 0, in: recognizer.view)
+            let p2 = recognizer.location(ofTouch: 1, in: recognizer.view)
+            view.updateAnchorPoint(forTouchPoints: (p1, p2))
+        }
+        let scale = recognizer.scale
+        view.transform = view.transform.scaledBy(x: scale, y: scale)
+        recognizer.scale = 1
+    }
+
+    @objc private func handleRotateGesture(_ recognizer: UIRotationGestureRecognizer) {
+        if recognizer.state == .began {
+            let p1 = recognizer.location(ofTouch: 0, in: recognizer.view)
+            let p2 = recognizer.location(ofTouch: 1, in: recognizer.view)
+            view.updateAnchorPoint(forTouchPoints: (p1, p2))
+        }
+        let rotation = recognizer.rotation
+        view.transform = view.transform.rotated(by: rotation)
+        recognizer.rotation = 0
+    }
 }
 
 // =============================================================================
