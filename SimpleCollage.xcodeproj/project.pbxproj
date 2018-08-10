@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B453304EF9C728DFE41A0248 /* Pods_SimpleCollage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D30D475C832C463D46F8DA61 /* Pods_SimpleCollage.framework */; };
 		FB2E2AED1F46E90500E1F14F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */; };
 		FB2E2AEF1F46E90500E1F14F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2E2AEE1F46E90500E1F14F /* ViewController.swift */; };
 		FB2E2AF41F46E90500E1F14F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB2E2AF31F46E90500E1F14F /* Assets.xcassets */; };
@@ -26,6 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1FA86D3029EC6FC6C719AF3C /* Pods-SimpleCollage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCollage.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCollage/Pods-SimpleCollage.release.xcconfig"; sourceTree = "<group>"; };
+		89FDE351C886DD751441A618 /* Pods-SimpleCollage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCollage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCollage/Pods-SimpleCollage.debug.xcconfig"; sourceTree = "<group>"; };
+		D30D475C832C463D46F8DA61 /* Pods_SimpleCollage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SimpleCollage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2E2AE91F46E90500E1F14F /* SimpleCollage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCollage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2E2AEC1F46E90500E1F14F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB2E2AEE1F46E90500E1F14F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B453304EF9C728DFE41A0248 /* Pods_SimpleCollage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +61,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3602FAC9CDE4215B7C25A529 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				89FDE351C886DD751441A618 /* Pods-SimpleCollage.debug.xcconfig */,
+				1FA86D3029EC6FC6C719AF3C /* Pods-SimpleCollage.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AEEA0133D05CEEDD4DBEE5D8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D30D475C832C463D46F8DA61 /* Pods_SimpleCollage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FB2E2AE01F46E90500E1F14F = {
 			isa = PBXGroup;
 			children = (
 				FB2E2AEB1F46E90500E1F14F /* SimpleCollage */,
 				FB2E2B001F46E90500E1F14F /* SimpleCollageTests */,
 				FB2E2AEA1F46E90500E1F14F /* Products */,
+				3602FAC9CDE4215B7C25A529 /* Pods */,
+				AEEA0133D05CEEDD4DBEE5D8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB2E2B061F46E90500E1F14F /* Build configuration list for PBXNativeTarget "SimpleCollage" */;
 			buildPhases = (
+				2B1E91ECB54FA676F0EC9337 /* [CP] Check Pods Manifest.lock */,
 				FB2E2AE51F46E90500E1F14F /* Sources */,
 				FB2E2AE61F46E90500E1F14F /* Frameworks */,
 				FB2E2AE71F46E90500E1F14F /* Resources */,
+				FB8602DF211D28E800480019 /* Run Fabric Script */,
 			);
 			buildRules = (
 			);
@@ -206,6 +232,41 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B1E91ECB54FA676F0EC9337 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleCollage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB8602DF211D28E800480019 /* Run Fabric Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Fabric Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 80270a52c57d6f1e140c698a298494a13f175076 b69aa7aa2481c88295487f3eec3fe20bbccab7020abeafad84d3782cdaeb9b8e";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FB2E2AE51F46E90500E1F14F /* Sources */ = {
@@ -292,7 +353,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -342,13 +403,14 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		FB2E2B071F46E90500E1F14F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89FDE351C886DD751441A618 /* Pods-SimpleCollage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -356,7 +418,7 @@
 				INFOPLIST_FILE = SimpleCollage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardinalblue.Picobook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +426,7 @@
 		};
 		FB2E2B081F46E90500E1F14F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FA86D3029EC6FC6C719AF3C /* Pods-SimpleCollage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -371,7 +434,7 @@
 				INFOPLIST_FILE = SimpleCollage/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yyjim.SimpleCollage;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardinalblue.Picobook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
